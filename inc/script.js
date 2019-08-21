@@ -1,4 +1,4 @@
-////////////////registration//////////////////////////////////////////
+//////////////////////////registration//////////////////////////////////////////
 var request;
 
 $("#registerForm").submit(function(event){
@@ -20,21 +20,32 @@ $("#registerForm").submit(function(event){
        type: "POST",
        data: serializedData
    });
+//success window// style and script ar included in navbar
+   request.done(function (response, textStatus, jqXHR){
+        Swal.fire(
+        "Hooray!",
+        "You are successfully registered. Now you can login!",
+        "success"
+        );
+    });
 
    request.done(function (response, textStatus, jqXHR){
-       alert("Success!");
+       console.log("Success!");
    });
 
    request.fail(function (jqXHR, textStatus, errorThrown){
 
-       alert(
+       console.log(
            "The following error occurred: "+
            textStatus, errorThrown
        );
    });
+//set the input fields empty
+   $("#registerForm")[0].reset();
 
    request.always(function () {
 
        $inputs.prop("disabled", false);
    });
+
 });

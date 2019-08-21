@@ -22,6 +22,7 @@ include_once "inc/navbar.php";
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="login.php" class="btn btn-warning">Login</a>
             </form>
         </div>
         <div class="col-sm-2">

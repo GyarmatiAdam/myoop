@@ -1,5 +1,9 @@
 <?php
 include_once "inc/navbar.php";
+include_once "inc/class.user.php";
+
+$user = new User();
+$data = $user->select_from('users', 1);
 ?>
 <div class="container" style="margin-top:5rem">
     <div class="row">
@@ -17,6 +21,7 @@ include_once "inc/navbar.php";
                     <input type="password" class="form-control" name="pass" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="register.php" class="btn btn-warning">Register</a>
             </form>
         </div>
         <div class="col-sm-2">
