@@ -1,7 +1,7 @@
-////////////////insert into///////////////////////////////////////////////////////////
+////////////////registration//////////////////////////////////////////
 var request;
 
-$("#insertForm").submit(function(event){
+$("#registerForm").submit(function(event){
    event.preventDefault();
 
    if (request) {
@@ -16,18 +16,18 @@ $("#insertForm").submit(function(event){
    $inputs.prop("disabled", true);
 
    request = $.ajax({
-       url: "admin.php",
-       type: "post",
+       url: "inc/action_register.php",
+       type: "POST",
        data: serializedData
    });
 
    request.done(function (response, textStatus, jqXHR){
-       console.log("Success!");
+       alert("Success!");
    });
 
    request.fail(function (jqXHR, textStatus, errorThrown){
 
-       console.error(
+       alert(
            "The following error occurred: "+
            textStatus, errorThrown
        );
@@ -38,4 +38,3 @@ $("#insertForm").submit(function(event){
        $inputs.prop("disabled", false);
    });
 });
-

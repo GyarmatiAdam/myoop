@@ -9,19 +9,21 @@ class User {
         $sql = "SELECT * FROM $table LIMIT 0, $limit";
         
         $result = mysqli_query($connect, $sql);
-        $arr = array();
-        $result_arr = array();
+        $array = array();
+        $result_array = array();
         
-        while($arr = mysqli_fetch_array($result)){
-        $result_arr[] = $arr;
+        while($array = mysqli_fetch_array($result)){
+        $result_array[] = $array;
         }
         
-        return $result_arr;
+        return $result_array;
         
     }
 
 /////////////////////////////////////insert into database///////////////////////////
     function insert_into($table_name, $form_data){
+        $connect = mysqli_connect("localhost", "root", "", "mymvc");
+
         // retrieve the keys of the array (column titles)
         $fields = array_keys($form_data);
 
@@ -31,7 +33,7 @@ class User {
         VALUES('".implode("','", $form_data)."')";
 
         // run and return the query result resource
-        return mysql_query($sql);
+        return mysqli_query($connect, $sql);
     }
 
 /////////////////////////////////////delete from database////////////////////////////

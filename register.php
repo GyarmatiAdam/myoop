@@ -7,7 +7,7 @@ include_once "inc/navbar.php";
             <h1>Register</h1>
         </div>
         <div class="col-sm-8">
-            <form id="form">
+            <form method="POST" id="registerForm" class="form">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
