@@ -1,7 +1,7 @@
 <?php
 class User {
 
-////////////////////////////////////check if more credentials are already exists//////////////////
+//////////////check if credentials are already exists and fetch tem into array//////////////////
     function check_more_credentials($table, $val1, $val2, $val3, $val4){
             
         $connect = mysqli_connect("localhost", "root", "", "mymvc");
@@ -18,7 +18,7 @@ class User {
     }
 
 
-////////////////////////////////////check if credentials are already exists//////////////////
+////////////////////////////////////check if credential already exists////////////////////////
     function check_credentials($table, $val1, $val2){
         
         $connect = mysqli_connect("localhost", "root", "", "mymvc");
@@ -38,7 +38,7 @@ class User {
         return $key;
     }
 
-/////////////////////////////////////select from database///////////////////////////////////
+//////////////////////select all data from one database table///////////////////////////////////
     function select_from($table){
 
         $connect = mysqli_connect("localhost", "root", "", "mymvc");
@@ -54,7 +54,7 @@ class User {
         return $result_array;       
     }
 
-/////////////////////////////////////insert into database///////////////////////////////////
+/////////////////////////////////////insert into one database table///////////////////////////////////
     function insert_into($table_name, $form_data){
         $connect = mysqli_connect("localhost", "root", "", "mymvc");
 
