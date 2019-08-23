@@ -1,8 +1,4 @@
 <?php
-if(isset($_SESSION['user'])!="") {
-    header("Location: login.php");
-    exit;
-}
 class User {
 
 ////////////////////////////////////check if more credentials are already exists//////////////////
