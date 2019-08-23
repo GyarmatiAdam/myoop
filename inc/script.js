@@ -22,23 +22,23 @@ $("#registerForm").submit(function(event){
    });
 //success window// style and script ar included in navbar
    request.done(function (response, textStatus, jqXHR){
-        Swal.fire(
-        "Hooray!",
-        "You are successfully registered. Now you can login!",
-        "success"
-        );
+        Swal.fire({
+            position: 'center',
+            type: 'success',
+            title: 'You are successfilly registered!',
+            showConfirmButton: false,
+            timer: 1500
+        })
     });
 
-   request.done(function (response, textStatus, jqXHR){
-       console.log("Success!");
-   });
-
    request.fail(function (jqXHR, textStatus, errorThrown){
-
-       console.log(
-           "The following error occurred: "+
-           textStatus, errorThrown
-       );
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            showConfirmButton: false,
+            timer: 1500
+        })
    });
 //set the input fields empty
    $("#registerForm")[0].reset();

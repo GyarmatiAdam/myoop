@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,6 +28,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="login.php">Login</a>
             </li>
+            <?php if (isset($_SESSION['user'])){ ?>
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php?logout">Logout</a>
+            </li>
+            <?php } ?>
             </ul>
             <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

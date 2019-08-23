@@ -1,26 +1,64 @@
 <?php
+if(isset($_SESSION['user'])!="") {
+    header("Location: login.php");
+    exit;
+}
 class User {
 
-/////////////////////////////////////select from database///////////////////////////
-    function select_from($table, $limit){
-
+////////////////////////////////////check if more credentials are already exists//////////////////
+    function check_more_credentials($table, $val1, $val2, $val3, $val4){
+            
         $connect = mysqli_connect("localhost", "root", "", "mymvc");
-        
-        $sql = "SELECT * FROM $table LIMIT 0, $limit";
-        
+
+        $sql = "SELECT $val1, $val2, $val3 FROM $table WHERE $val1 = '$val4'";
         $result = mysqli_query($connect, $sql);
         $array = array();
-        $result_array = array();
-        
+        $result_array = array();       
         while($array = mysqli_fetch_array($result)){
-        $result_array[] = $array;
+            $result_array[] = $array;
         }
         
-        return $result_array;
-        
+        return $result_array;  
     }
 
-/////////////////////////////////////insert into database///////////////////////////
+
+////////////////////////////////////check if credentials are already exists//////////////////
+    function check_credentials($table, $val1, $val2){
+        
+        $connect = mysqli_connect("localhost", "root", "", "mymvc");
+
+        $sql = "SELECT $val1 FROM $table WHERE $val1 = '$val2'";
+        $result = mysqli_query($connect, $sql);
+        $count = mysqli_num_rows($result);
+        
+        return $count;  
+    }
+
+////////////////////////////////////prevent from malicious injenction/////////////////////////
+    function protect_input($key, $value=''){
+        $key = trim($_POST[$value]);
+        $key = strip_tags($key);
+        $key = htmlspecialchars($key);
+        return $key;
+    }
+
+/////////////////////////////////////select from database///////////////////////////////////
+    function select_from($table){
+
+        $connect = mysqli_connect("localhost", "root", "", "mymvc");
+
+        $sql = "SELECT * FROM $table";
+        $result = mysqli_query($connect, $sql);
+        $array = array();
+        $result_array = array();       
+        while($array = mysqli_fetch_array($result)){
+            $result_array[] = $array;
+        }
+        
+        return $result_array;       
+    }
+
+/////////////////////////////////////insert into database///////////////////////////////////
     function insert_into($table_name, $form_data){
         $connect = mysqli_connect("localhost", "root", "", "mymvc");
 
@@ -33,7 +71,7 @@ class User {
         return mysqli_query($connect, $sql);
     }
 
-/////////////////////////////////////delete from database////////////////////////////
+/////////////////////////////////////delete from database//////////////////////////////////
     function delete_from($table_name, $where_clause=''){
         // check for optional where clause
         $whereSQL = '';

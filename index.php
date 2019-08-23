@@ -1,9 +1,13 @@
 <?php
+if(isset($_SESSION['user'])!="") {
+    header("Location: login.php");
+    exit;
+}
 include_once "inc/navbar.php";
 include_once "inc/class.user.php";
 
 $user = new User();
-$data = $user->select_from('users', 5);
+$data = $user->select_from('users');
 foreach($data as $row){ 
 ?>
 <div class="container" style="margin-top:5rem">
