@@ -51,3 +51,41 @@ $("#registerForm").submit(function(event){
 });
 
 ////////////////////////////on delete///////////////////////////////////////////////////
+$(document).ready(function(){
+    $('#delete').click(function(){
+        if(confirm("Are you sure to delete?"))
+        {
+            var id = [];
+            $(':checkbox:checked').each(function(i){
+                id[i] = $(this).val();
+            });
+            if(id.length === 0)
+            {
+                alert("Please Select Checkbox");
+            }
+            else
+            {
+                $.ajax({
+                url:"inc/user_delete.php",
+                method: "POST",
+                data:{user_id:id},
+                success:function()
+                {
+                    Swal.fire({
+                        position: 'center',
+                        type: 'success',
+                        title: 'Deleted!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    for(var i =0; i<id.length; i++)
+                    {
+                        $('table#'+id[i]+'').css('background-color', '#ccc');
+                        $('table#'+id[i]+'').fadeOut('slow');
+                    }
+                }
+            });
+            }
+        }
+    });
+});

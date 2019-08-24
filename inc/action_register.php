@@ -17,7 +17,7 @@ $pass =$user->protect_input($pass, 'pass');
     $passhash = hash('sha256', $pass);
 //prevent from insertion if there is a match
 if($check > 0){
-    $error = "This email is already exists!";
+    $error = "This email already exists!";
 }else{
     $form_data = array(
         'email'=>$email,
