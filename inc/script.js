@@ -25,7 +25,7 @@ $("#registerForm").submit(function(event){
         Swal.fire({
             position: 'center',
             type: 'success',
-            title: 'You are successfilly registered!',
+            title: 'You are successfully registered!',
             showConfirmButton: false,
             timer: 1500
         })
@@ -49,3 +49,5 @@ $("#registerForm").submit(function(event){
    });
 
 });
+
+////////////////////////////on delete///////////////////////////////////////////////////

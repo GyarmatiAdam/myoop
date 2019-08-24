@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -32,6 +33,12 @@
             <?php }else{ ?>
             <li class="nav-item">
                 <a class="nav-link" href="logout.php?logout">Logout</a>
+            </li>
+            <li class="nav-item">
+                <p class="nav-link">Welcome  <?php ?></p>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin.php">Admin</a>
             </li>
             <?php } ?>
             </ul>

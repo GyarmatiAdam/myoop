@@ -54,7 +54,7 @@ class User {
         return $result_array;       
     }
 
-/////////////////////////////////////insert into one database table///////////////////////////////////
+/////////////////////////////insert into one database table///////////////////////////////////
     function insert_into($table_name, $form_data){
         $connect = mysqli_connect("localhost", "root", "", "mymvc");
 
@@ -67,27 +67,41 @@ class User {
         return mysqli_query($connect, $sql);
     }
 
-/////////////////////////////////////delete from database//////////////////////////////////
-    function delete_from($table_name, $where_clause=''){
-        // check for optional where clause
-        $whereSQL = '';
-        if(!empty($where_clause))
-        {
-            // check to see if the 'where' keyword exists
-            if(substr(strtoupper(trim($where_clause)), 0, 5) != 'WHERE')
-            {
-                // not found, add keyword
-                $whereSQL = " WHERE ".$where_clause;
-            } else
-            {
-                $whereSQL = " ".trim($where_clause);
-            }
+//////////////////////////////////////Pagination////////////////////////////////////////////
+    //count the number of all values
+    function Paginate($values,$per_page){
+        $total_values = count($values);
+    //get the current page
+        if(isset($_GET['page'])){
+        $current_page = $_GET['page'];
+        }else{
+    //pages start with number 1
+        $current_page = 1;
         }
-        // build the query
-        $sql = "DELETE FROM ".$table_name.$whereSQL;
+    //define the number of the content on each page
+        $counts = ceil($total_values / $per_page);
+        $param1 = ($current_page - 1) * $per_page;
+        $this->data = array_slice($values,$param1,$per_page);
 
-        // run and return the query result resource
-        return mysql_query($sql);
+    //number of pages are ascending
+        for($x=1; $x<= $counts; $x++){
+        $numbers[] = $x;
+        }
+        return $numbers;
+        }
+    //fetch the datas that will be displayed
+        function fetchResult(){
+        $resultsValues = $this->data;
+        return $resultsValues;
+    }
+
+/////////////////////////////////////delete from database//////////////////////////////////
+    function delete_from($table, $val1, $val2){
+        $connect = mysqli_connect("localhost", "root", "", "mymvc");
+
+        $sql = "DELETE  FROM $table WHERE $val1 = '$val2'";
+
+        return mysqli_query($connect, $sql);
     }
 
 
