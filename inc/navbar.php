@@ -23,10 +23,10 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home <span class="sr-only"></span></a>
             </li>
+            <?php if (!isset($_SESSION['user'])){ ?>
             <li class="nav-item">
                 <a class="nav-link" href="register.php">Register</a>
             </li>
-            <?php if (!isset($_SESSION['user'])){ ?>
             <li class="nav-item">
                 <a class="nav-link" href="login.php">Login</a>
             </li>
@@ -34,9 +34,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="logout.php?logout">Logout</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <p class="nav-link">Welcome  <?php ?></p>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="admin.php">Admin</a>
             </li>

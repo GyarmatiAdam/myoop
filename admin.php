@@ -21,8 +21,8 @@ $data = $user->select_from('users');
                 <tbody>
                     <tr>
                     <td><?php echo $row['email'];?></td>
-                    <td><input type="checkbox" name="user_id" value="<?php echo $row["user_id"]; ?>"></td>
-                    </td>
+                    <td><small>Choose to delete: </small><input type="checkbox" name="user_id" value="<?php echo $row["user_id"]; ?>"></td>
+                    <td><?php echo "<a href='user_update.php?user_id=" .$row['user_id']."'><button class='btn btn-warning' type='button'>Edit</button></a>"; ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -31,7 +31,7 @@ $data = $user->select_from('users');
             ?>
         </div>
         <div class="col-sm-2">
-        <button type="button" name="delete" id="delete">Delete</button>
+        <button class="btn btn-danger" type="button" name="delete" id="delete">Delete</button>
         </div>
     </div>
 </div>

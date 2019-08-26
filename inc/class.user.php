@@ -106,37 +106,33 @@ class User {
 
 
 ///////////////////////////////////////update database data//////////////////////////////////
-    function update_where($table_name, $form_data, $where_clause=''){
-        // check for optional where clause
+    function update_where($table, $data, $where_clause=''){
+
+        $connect = mysqli_connect("localhost", "root", "", "mymvc");
+
         $whereSQL = '';
         if(!empty($where_clause))
         {
-            // check to see if the 'where' keyword exists
             if(substr(strtoupper(trim($where_clause)), 0, 5) != 'WHERE')
             {
-                // not found, add key word
                 $whereSQL = " WHERE ".$where_clause;
             } else
             {
                 $whereSQL = " ".trim($where_clause);
             }
         }
-        // start the actual SQL statement
-        $sql = "UPDATE ".$table_name." SET ";
 
-        // loop and build the column /
+        $sql = "UPDATE ".$table." SET ";
         $sets = array();
-        foreach($form_data as $column => $value)
+        foreach($data as $column => $value)
         {
             $sets[] = "`".$column."` = '".$value."'";
         }
         $sql .= implode(', ', $sets);
-
-        // append the where statement
         $sql .= $whereSQL;
 
-        // run and return the query result
-        return mysql_query($sql);
+        return mysqli_query($connect, $sql);
+
     }
 
 }//class User close tag

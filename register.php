@@ -23,7 +23,7 @@ include_once "inc/navbar.php";
                 </div>
                 <!-- error message -->
                 <span id='error_message'></span>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Register</button>
                 <a href="login.php" class="btn btn-warning">Login</a>
             </form>
         </div>

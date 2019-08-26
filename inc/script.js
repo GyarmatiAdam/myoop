@@ -1,4 +1,4 @@
-//////////////////////////registration//////////////////////////////////////////
+//////////////////////////on registration//////////////////////////////////////////
 var request;
 
 $("#registerForm").submit(function(event){
@@ -53,7 +53,7 @@ $("#registerForm").submit(function(event){
 ////////////////////////////on delete///////////////////////////////////////////////////
 $(document).ready(function(){
     $('#delete').click(function(){
-        if(confirm("Are you sure to delete?"))
+        if(confirm("Do you really want to delete?"))
         {
             var id = [];
             $(':checkbox:checked').each(function(i){
@@ -89,3 +89,5 @@ $(document).ready(function(){
         }
     });
 });
+
+////////////////////////////////////////////on update///////////////////////////////////////////
