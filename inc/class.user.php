@@ -1,11 +1,11 @@
 <?php
-class User {
+    $connect = mysqli_connect("localhost", "root", "", "mymvc");
 
+class User {
 //////////////check if credentials are already exists and fetch tem into array//////////////////
     function check_more_credentials($table, $val1, $val2, $val3, $val4){
             
-        $connect = mysqli_connect("localhost", "root", "", "mymvc");
-
+        global $connect;
         $sql = "SELECT $val1, $val2, $val3 FROM $table WHERE $val1 = '$val4'";
         $result = mysqli_query($connect, $sql);
         $array = array();
@@ -21,8 +21,7 @@ class User {
 ////////////////////////////////////check if credential already exists////////////////////////
     function check_credentials($table, $val1, $val2){
         
-        $connect = mysqli_connect("localhost", "root", "", "mymvc");
-
+        global $connect;
         $sql = "SELECT $val1 FROM $table WHERE $val1 = '$val2'";
         $result = mysqli_query($connect, $sql);
         $count = mysqli_num_rows($result);
@@ -41,8 +40,7 @@ class User {
 //////////////////////select all data from one database table///////////////////////////////////
     function select_from($table){
 
-        $connect = mysqli_connect("localhost", "root", "", "mymvc");
-
+        global $connect;
         $sql = "SELECT * FROM $table";
         $result = mysqli_query($connect, $sql);
         $array = array();
@@ -56,8 +54,7 @@ class User {
 
 /////////////////////////////insert into one database table///////////////////////////////////
     function insert_into($table_name, $form_data){
-        $connect = mysqli_connect("localhost", "root", "", "mymvc");
-
+        global $connect;
         $fields = array_keys($form_data);
 
         $sql = "INSERT INTO ".$table_name."
@@ -97,8 +94,7 @@ class User {
 
 /////////////////////////////////////delete from database//////////////////////////////////
     function delete_from($table, $val1, $val2){
-        $connect = mysqli_connect("localhost", "root", "", "mymvc");
-
+        global $connect;
         $sql = "DELETE  FROM $table WHERE $val1 = '$val2'";
 
         return mysqli_query($connect, $sql);
@@ -108,8 +104,7 @@ class User {
 ///////////////////////////////////////update database data//////////////////////////////////
     function update_where($table, $data, $where_clause=''){
 
-        $connect = mysqli_connect("localhost", "root", "", "mymvc");
-
+        global $connect;
         $whereSQL = '';
         if(!empty($where_clause))
         {

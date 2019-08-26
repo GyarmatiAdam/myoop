@@ -13,7 +13,7 @@ include_once "inc/class.user.php";
         <div class="col-sm-8">
         <h1>Update User data</h1>
         <?php foreach($data as $row){ ?>
-            <form method="POST" action="inc/action_user_update.php" id="update" class="form">
+            <form method="POST" id="update" class="form">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" name="email" value="<?php echo $row['email']; ?>" required>
@@ -21,8 +21,7 @@ include_once "inc/class.user.php";
                 </div>
                 <!-- error message -->
                 <span id='error_message'></span>
-                <button type="submit" name="update" class="btn btn-primary">Update</button>
-                <!-- <?php echo "<a href='inc/action_user_update.php?user_id=" .$row['user_id']."'><button class='btn btn-primary' type='button'>Update</button></a>"; ?> -->
+                <button type="submit" class="btn btn-primary">Update</button>
                 <a href="admin.php"><button type="button" class="btn btn-secondary">Back</button></a>
             </form>
             <?php }?>
