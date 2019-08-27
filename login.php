@@ -16,7 +16,7 @@ include_once "inc/navbar.php";
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" name="pass" placeholder="Password" required>
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary">Login</button>
                 <a href="register.php" class="btn btn-warning">Register</a>
             </form>
         </div>

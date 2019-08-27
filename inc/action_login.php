@@ -15,7 +15,7 @@ if(isset($_POST['submit'])) {
 
     //check if data is already in database
     $check = $user->check_credentials('users', 'email', $email);
-    $data = $user->check_more_credentials('users', 'email', 'pass', 'user_id', $email);
+    $data = $user->check_all_credentials('users', 'email', $email);
     foreach($data as $row){
         $password = $row['pass'];
         $user = $row['user_id'];

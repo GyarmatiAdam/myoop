@@ -3,9 +3,9 @@ include_once "inc/navbar.php";
 include_once "inc/class.user.php";
     $user_id = $_GET["user_id"];
     $user = new User();
-    $data = $user->check_more_credentials('users', 'user_id', 'pass', 'email', $user_id);
+    $data = $user->check_all_credentials('users', 'user_id', $user_id);
 ?>
-<div class="container" style="margin-top:5rem">
+<div class="container" style="margin-top:5rem;margin-bottom:5rem;">
     <div class="row">
         <div class="col-sm-2">
 
@@ -15,9 +15,41 @@ include_once "inc/class.user.php";
         <?php foreach($data as $row){ ?>
             <form method="POST" id="update" class="form">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label>Email address</label>
                     <input type="email" class="form-control" name="email" value="<?php echo $row['email']; ?>" required>
                     <input type="hidden" name="user_id" value="<?php echo $row['user_id']?>"/>
+                </div>
+                <div class="form-group">
+                <label>First name</label>
+                    <input type="text" class="form-control" name="first_name" value="<?php echo $row['first_name']; ?>" required>
+                </div>
+                <div class="form-group">                    
+                <label>Last name</label>
+                    <input type="text" class="form-control" name="last_name" value="<?php echo $row['last_name']; ?>" required>
+                </div>
+                <div class="form-group">
+                <label>Username</label>
+                    <input type="text" class="form-control" name="username" value="<?php echo $row['username']; ?>" required>
+                </div>
+                <div class="form-group">
+                <label>Date of borth</label>
+                    <input type="date" class="form-control" name="dob" value="<?php echo $row['dob']; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>User-role:</label>
+                    <select class="custom-select"  name="user_role" value="<?php echo $data['user_role']?>" required>
+                        <option value="">Select One</option>
+                        <option value="1">Admin</option>
+                        <option value="2">Group user</option>
+                        <option value="3">User</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>User-status:</label>
+                    <select class="custom-select" name="user_status">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
                 </div>
                 <!-- error message -->
                 <span id='error_message'></span>

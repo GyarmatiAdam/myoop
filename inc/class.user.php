@@ -1,12 +1,12 @@
 <?php
-    $connect = mysqli_connect("localhost", "root", "", "mymvc");
+    $connect = mysqli_connect("localhost", "root", "", "findmygame");
 
 class User {
 //////////////check if credentials are already exists and fetch tem into array//////////////////
-    function check_more_credentials($table, $val1, $val2, $val3, $val4){
+    function check_all_credentials($table, $val1, $val2){
             
         global $connect;
-        $sql = "SELECT $val1, $val2, $val3 FROM $table WHERE $val1 = '$val4'";
+        $sql = "SELECT * FROM $table WHERE $val1 = '$val2'";
         $result = mysqli_query($connect, $sql);
         $array = array();
         $result_array = array();       
@@ -30,7 +30,7 @@ class User {
     }
 
 ////////////////////////////////////prevent from malicious injenction/////////////////////////
-    function protect_input($key, $value=''){
+    function protect_input($key, $value){
         $key = trim($_POST[$value]);
         $key = strip_tags($key);
         $key = htmlspecialchars($key);
