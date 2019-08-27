@@ -2,7 +2,6 @@
 include_once "class.user.php";
 
 $user_id = $_POST["user_id"];
-//$email = "";
 
 $user = new User();
 $first_name = $user->protect_input($first_name, 'first_name');

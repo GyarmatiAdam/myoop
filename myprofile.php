@@ -1,6 +1,6 @@
 <?php 
 include_once "inc/navbar.php";
-include_once "inc/class.user.php";
+$upload = $user->upload('users', 'image_path', 'user_id', $loggedin);
 ?>
 <div class="container" style="margin-top:5rem;margin-bottom:5rem;">
     <div class="row">
@@ -10,7 +10,7 @@ include_once "inc/class.user.php";
         <div class="col-sm-8">
         <h1>You can change your personal data here</h1>
         <?php foreach($loggedin_data as $row){ ?>
-            <form method="POST" id="update" class="form">
+            <form method="POST" id="update" class="form" action="" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Email address</label>
                     <input type="email" class="form-control" name="email" value="<?php echo $row['email']; ?>" required>
@@ -34,12 +34,17 @@ include_once "inc/class.user.php";
                     <input type="hidden" class="form-control" name="user_role" value="<?php echo $row['user_role']; ?>" required>
                     <input type="hidden" class="form-control" name="user_status" value="<?php echo $row['user_status']; ?>" required>
                 </div>
-                <!-- error message -->
-                <span id='error_message'></span>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" name='update' class="btn btn-primary">Update</button>
                 <a href="admin.php"><button type="button" class="btn btn-secondary">Back</button></a>
             </form>
             <?php }?>
+            <form method="POST" class="form" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Upload image:</label><br>
+                    <input type="file" name="file" /><br><br>
+                    <input type="submit" value="Upload" name="upload" class="btn btn-primary">
+                </div>
+            </form>
         </div>
         <div class="col-sm-2">
 

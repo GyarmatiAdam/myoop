@@ -130,5 +130,28 @@ class User {
 
     }
 
+////////////////////////image upload//////////////////////////////////////////////////////
+    function upload($table, $path, $val1, $val2){
+        global $connect;
+
+        if(isset($_POST['upload'])){
+            
+            $name = $_FILES['file']['name'];
+            $target_dir = "images/";
+            $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            $extensions_arr = array("jpg","jpeg","png","gif");
+            if( in_array($imageFileType,$extensions_arr) ){
+            
+                //$sql = "INSERT INTO $table ($path) VALUES('".$name."') WHERE $val1 = '$val2'";
+                $sql = "UPDATE $table SET $path='$name' WHERE $val1 = '$val2'";
+                mysqli_query($connect,$sql);
+            
+                move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name);
+            }
+        }//$_POST['upload'] close tag
+    }
+
 }//class User close tag
 ?>

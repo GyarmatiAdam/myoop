@@ -56,9 +56,10 @@ unset($_SESSION['loggedin']);
         <?php if (isset($_SESSION['loggedin'])){ ?>
             <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link">Welcome: 
+                <a class="nav-link">Welcome, 
         <?php foreach($loggedin_data as $loggedin_row){
                 echo $loggedin_row['username']; }?>
+            <img style="width:35px;border-radius: 50%;" src="<?php if(!$loggedin_row['image_path']){echo 'images/default.png';} else {echo 'images/'.$loggedin_row['image_path'];}?>" />
                 </a>
             </li>
             </ul>
