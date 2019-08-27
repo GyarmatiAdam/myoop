@@ -7,7 +7,6 @@ $data = $user->select_from('users');
 <div class="container" style="margin-top:5rem; margin-bottom:5rem;">
     <div class="row">
         <div class="col-sm-2">
-
         </div>
         <div class="col-sm-8">
         <?php foreach($data as $row){  ?> 

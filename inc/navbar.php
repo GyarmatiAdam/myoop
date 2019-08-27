@@ -1,4 +1,13 @@
 <?php session_start();
+include_once "inc/class.user.php";
+$user = new User();
+//if statement to avoid error message after logout
+if (isset($_SESSION['loggedin'])) {
+$loggedin = $_SESSION['loggedin'];
+$loggedin_data = $user->check_all_credentials('users', 'user_id', $loggedin);
+} else{
+unset($_SESSION['loggedin']);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,28 +32,40 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home <span class="sr-only"></span></a>
             </li>
-            <?php if (!isset($_SESSION['user'])){ ?>
+        <?php if (!isset($_SESSION['loggedin'])){ ?>
             <li class="nav-item">
                 <a class="nav-link" href="register.php">Register</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="login.php">Login</a>
             </li>
-            <?php }else{ ?>
+        <?php }else{ ?>
             <li class="nav-item">
                 <a class="nav-link" href="logout.php?logout">Logout</a>
             </li>
-            <!-- <li class="nav-item">
-                <p class="nav-link">Welcome  <?php ?></p>
-            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="myprofile.php">MyProfile</a>
+            </li>
+        <?php } ?>
+        <?php if (isset($_SESSION['admin'])){ ?>
             <li class="nav-item">
                 <a class="nav-link" href="admin.php">Admin</a>
             </li>
-            <?php } ?>
+        <?php } ?>
             </ul>
+        <?php if (isset($_SESSION['loggedin'])){ ?>
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link">Welcome: 
+        <?php foreach($loggedin_data as $loggedin_row){
+                echo $loggedin_row['username']; }?>
+                </a>
+            </li>
+            </ul>
+        <?php } ?>
             <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
     </nav>

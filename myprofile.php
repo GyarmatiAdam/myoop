@@ -1,9 +1,6 @@
 <?php 
 include_once "inc/navbar.php";
 include_once "inc/class.user.php";
-    $user_id = $_GET["user_id"];
-    //$user = new User();
-    $data = $user->check_all_credentials('users', 'user_id', $user_id);
 ?>
 <div class="container" style="margin-top:5rem;margin-bottom:5rem;">
     <div class="row">
@@ -11,8 +8,8 @@ include_once "inc/class.user.php";
 
         </div>
         <div class="col-sm-8">
-        <h1>Update User data</h1>
-        <?php foreach($data as $row){ ?>
+        <h1>You can change your personal data here</h1>
+        <?php foreach($loggedin_data as $row){ ?>
             <form method="POST" id="update" class="form">
                 <div class="form-group">
                     <label>Email address</label>
@@ -34,21 +31,8 @@ include_once "inc/class.user.php";
                 <div class="form-group">
                 <label>Date of borth</label>
                     <input type="date" class="form-control" name="dob" value="<?php echo $row['dob']; ?>" required>
-                </div>
-                <div class="form-group">
-                    <label>User-role:</label>
-                    <select class="custom-select"  name="user_role" value="<?php echo $data['user_role']?>" required>
-                        <option value="3">User</option>
-                        <option value="2">Group user</option>
-                        <option value="1">Admin</option> 
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>User-status:</label>
-                    <select class="custom-select" name="user_status">
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
+                    <input type="hidden" class="form-control" name="user_role" value="<?php echo $row['user_role']; ?>" required>
+                    <input type="hidden" class="form-control" name="user_status" value="<?php echo $row['user_status']; ?>" required>
                 </div>
                 <!-- error message -->
                 <span id='error_message'></span>
