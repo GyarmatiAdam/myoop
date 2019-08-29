@@ -23,7 +23,7 @@ unset($_SESSION['loggedin']);
     <link rel="stylesheet" href="inc/style.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,7 +59,7 @@ unset($_SESSION['loggedin']);
                 <a class="nav-link">Welcome, 
         <?php foreach($loggedin_data as $loggedin_row){
                 echo $loggedin_row['username']; }?>
-            <img style="width:35px;border-radius: 50%;" src="<?php if(!$loggedin_row['image_path']){echo 'images/default.png';} else {echo 'images/'.$loggedin_row['image_path'];}?>" />
+            <img style="width:45px;border-radius: 50%;" src="<?php if(!$loggedin_row['image_path']){echo 'images/default.png';} else {echo 'images/'.$loggedin_row['image_path'];}?>" />
                 </a>
             </li>
             </ul>
