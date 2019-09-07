@@ -144,7 +144,6 @@ class User {
             $extensions_arr = array("jpg","jpeg","png","gif");
             if( in_array($imageFileType,$extensions_arr) ){
             
-                //$sql = "INSERT INTO $table ($path) VALUES('".$name."') WHERE $val1 = '$val2'";
                 $sql = "UPDATE $table SET $path='$name' WHERE $val1 = '$val2'";
                 mysqli_query($connect,$sql);
             

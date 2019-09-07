@@ -1,7 +1,5 @@
 <?php
 include_once "inc/navbar.php";
-include_once "inc/class.user.php";
-$user = new User();
 $data = $user->select_from('users');
 ?>
 <div class="container" style="margin-top:5rem; margin-bottom:5rem;">
@@ -10,7 +8,7 @@ $data = $user->select_from('users');
         </div>
         <div class="col-sm-8">
         <?php foreach($data as $row){  ?> 
-            <table id="<?php echo $row["user_id"]; ?>" class="table table-dark">
+            <table id="<?php echo $row["user_id"]; ?>" class="table">
                 <thead>
                     <tr>
                     <th scope="col">Email</th>

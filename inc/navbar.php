@@ -46,6 +46,9 @@ unset($_SESSION['loggedin']);
             <li class="nav-item">
                 <a class="nav-link" href="myprofile.php">MyProfile</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="create_group.php">MyGroups</a>
+            </li>
         <?php } ?>
         <?php if (isset($_SESSION['admin'])){ ?>
             <li class="nav-item">

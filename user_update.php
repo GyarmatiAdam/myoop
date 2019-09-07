@@ -1,6 +1,5 @@
 <?php 
 include_once "inc/navbar.php";
-include_once "inc/class.user.php";
     $user_id = $_GET["user_id"];
     //$user = new User();
     $data = $user->check_all_credentials('users', 'user_id', $user_id);
