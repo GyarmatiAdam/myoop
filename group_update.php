@@ -21,15 +21,19 @@ include_once "inc/navbar.php";
             </div>
             <form method="POST" id="group_update" class="form">
                 <div class="form-group">
+                <label>Group name</label>
                     <input type="text" class="form-control" name="group_name" value="<?php echo $row['group_name']; ?>" required>
                 </div>
                 <div class="form-group">
+                <label>Description</label>
                     <input rows="5" type="text" class="form-control" name="group_desc" value="<?php echo $row['group_desc']; ?>" required>
                 </div>
                 <div class="form-group">
+                <label>Expected Group Member</label>
                     <input type="number" class="form-control" name="vacancy_number" value="<?php echo $row['vacancy_number']; ?>" required>
                 </div>
                 <div class="form-group">
+                <label>Announcement</label>
                     <input rows="3" type="text" class="form-control" name="vacancy_desc" value="<?php echo $row['vacancy_desc']; ?>" required>
                     <input type="hidden" name="group_id" value="<?php echo $row['group_id']?>"/>
                 </div>

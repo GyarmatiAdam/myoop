@@ -1,4 +1,6 @@
 ///////////////////////////////////////////on group creat////////////////////////////////
+var request;
+
 $("#GroupForm").submit(function(event){
     event.preventDefault();
  
@@ -96,3 +98,43 @@ $("#group_update").submit(function(event){
  
  });
  
+ ////////////////////////////on delete///////////////////////////////////////////////////
+$(document).ready(function(){
+    $('#delete_group').click(function(){
+        if(confirm("Do you really want to delete?"))
+        {
+            var id = [];
+            $(':checkbox:checked').each(function(i){
+                id[i] = $(this).val();
+            });
+            if(id.length === 0)
+            {
+                alert("Please Select Checkbox");
+            }
+            else
+            {
+                $.ajax({
+                url:"inc/group_delete.php",
+                method: "POST",
+                data:{group_id:id}, 
+                success:function()
+                {
+                    Swal.fire({
+                        position: 'center',
+                        type: 'success',
+                        title: 'Deleted!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    for(var i =0; i<id.length; i++)
+                    {
+                        $('div#'+id[i]+'').css('background-color', '#ccc');
+                        $('div#'+id[i]+'').fadeOut('slow');
+                    }
+                }
+            });
+            }
+        }
+    });
+});
+

@@ -1,4 +1,4 @@
-    <div class="card text-center">
+    <div class="card text-center fixed-bottom">
         <div class="card-body" id="footer">
             <h5 class="card-title"><small>This site proudly made by</small> Adam Gyarmati</h5>
         </div>

@@ -95,7 +95,7 @@ class User {
 /////////////////////////////////////delete from database//////////////////////////////////
     function delete_from($table, $val1, $val2){
         global $connect;
-        $sql = "DELETE  FROM $table WHERE $val1 = '$val2'";
+        $sql = "DELETE FROM $table WHERE $val1 = '$val2'";
 
         return mysqli_query($connect, $sql);
     }

@@ -2,7 +2,7 @@
 include_once "inc/navbar.php";
 $data = $user->select_from('users');
 ?>
-<div class="container" style="margin-top:5rem; margin-bottom:5rem;">
+<div class="container">
     <div class="row">
         <div class="col-sm-2">
         </div>
