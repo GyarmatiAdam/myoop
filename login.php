@@ -1,7 +1,7 @@
 <?php
 include_once "inc/navbar.php";
 ?>
-<div class="container" style="margin-top:5rem">
+<div class="container">
     <div class="row">
         <div class="col-sm-2">
             <h1>Login</h1>

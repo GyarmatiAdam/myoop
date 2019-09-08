@@ -16,12 +16,12 @@ $("#GroupForm").submit(function(event){
     $inputs.prop("disabled", true);
  
     request = $.ajax({
-        url: "inc/action_group.php",
+        url: "group/action_group.php",
         type: "POST",
         data: serializedData
     });
  //success window// style and script ar included in navbar
-    request.done(function (response, textStatus, jqXHR){
+    request.done(function (response, textStatus, jqXHR){ 
          Swal.fire({
              position: 'center',
              type: 'success',
@@ -66,7 +66,7 @@ $("#group_update").submit(function(event){
     $inputs.prop("disabled", true);
  
     request = $.ajax({
-        url: "inc/action_group_update.php",
+        url: "group/action_group_update.php",
         type: "POST",
         data: serializedData
     });
@@ -114,7 +114,7 @@ $(document).ready(function(){
             else
             {
                 $.ajax({
-                url:"inc/group_delete.php",
+                url:"group/group_delete.php",
                 method: "POST",
                 data:{group_id:id}, 
                 success:function()
@@ -138,3 +138,4 @@ $(document).ready(function(){
     });
 });
 
+// window.location.pathname='myoop/group/action_group.php'

@@ -1,21 +1,22 @@
 <?php
 include_once "inc/navbar.php";
 $data = $user->select_from('groups');
+$category = $user->select_from('categories');
 ?>
-<div class="container" style="margin-top:5rem">
+<div class="container">
     <div class="row">
         <div class="col-sm-1">
-            
+            <button class="btn btn-danger" type="button" name="delete_group" id="delete_group">Delete</button>
         </div>
         <div class="col-sm-10">
         <h2>My groups:</h2>
             <div class="d-flex flex-wrap justify-content-center">
                 <?php foreach($data as $row){  ?> 
-                    <div id="group_card" class="card" style="width: 15rem;" id="<?php echo $row["group_id"]; ?>">
+                    <div class="group_card card" style="width: 15rem;" id="<?php echo $row["group_id"]; ?>">
                     <img class="card-img-top" src="<?php if(!$row['groups_pic']){echo 'images/group.jpg';} else {echo 'images/'.$row['groups_pic'];}?>" />
                         <div class="card-body">
                             <h5 class="text-center card-title"><?php echo $row['group_name'];?></h5>
-                            <!-- <small>Choose to delete: </small><input type="checkbox" name="group_id" value="<?php echo $row["group_id"]; ?>"> -->
+                            <small>Choose to delete: </small><input type="checkbox" name="group_id" value="<?php echo $row["group_id"]; ?>">
                             <?php echo "<a href='group_update.php?group_id=" .$row['group_id']."'><button class='btn-block btn btn-warning' type='button'>Edit Group</button></a>"; ?>
                         </div>
                     </div>
@@ -25,6 +26,18 @@ $data = $user->select_from('groups');
             </div>
             <h1>Create new group:</h1>
             <form method="POST" id="GroupForm" class="form">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">Category</label>
+                        </div>                        
+                        <select class="custom-select" name="fk_cat_id">
+                        <?php foreach($category as $cat_row){  ?>
+                            <option value="<?php echo $cat_row["cat_id"]; ?>"><?php echo $cat_row["cat_type"]; ?></option>
+                        <?php
+                        };//foreach close tag
+                        ?>
+                        </select>
+                    </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="group_name" placeholder="Group name" required>
                 </div>

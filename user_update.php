@@ -4,7 +4,7 @@ include_once "inc/navbar.php";
     //$user = new User();
     $data = $user->check_all_credentials('users', 'user_id', $user_id);
 ?>
-<div class="container" style="margin-top:5rem;margin-bottom:5rem;">
+<div class="container">
     <div class="row">
         <div class="col-sm-2">
 
@@ -35,15 +35,25 @@ include_once "inc/navbar.php";
                     <input type="date" class="form-control" name="dob" value="<?php echo $row['dob']; ?>" required>
                 </div>
                 <div class="form-group">
-                    <label>User-role:</label>
-                    <select class="custom-select"  name="user_role" value="<?php echo $data['user_role']?>" required>
+                    <label>User-role currently: 
+                        <?php
+                        if($row['user_role']==3){
+                            echo "User";
+                        }elseif($row['user_role']==2){
+                            echo "Group user";
+                        }else{
+                            echo "Admin";
+                        }
+                        ?>
+                    </label>
+                    <select class="custom-select"  name="user_role" required>
                         <option value="3">User</option>
                         <option value="2">Group user</option>
                         <option value="1">Admin</option> 
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>User-status:</label>
+                    <label>User-status: currently: <?php echo $row['user_status']; ?></label>
                     <select class="custom-select" name="user_status">
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>

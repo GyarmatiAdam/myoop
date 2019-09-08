@@ -16,7 +16,7 @@ $("#registerForm").submit(function(event){
    $inputs.prop("disabled", true);
 
    request = $.ajax({
-       url: "inc/action_register.php",
+       url: "user/action_register.php",
        type: "POST",
        data: serializedData
    });
@@ -66,7 +66,7 @@ $(document).ready(function(){
             else
             {
                 $.ajax({
-                url:"inc/user_delete.php",
+                url:"user/user_delete.php",
                 method: "POST",
                 data:{user_id:id},
                 success:function()
@@ -100,13 +100,13 @@ $("#update").submit(function(event){
 
    var $form = $(this);
 
-   var $inputs = $form.find("input, select, button, textarea");
+   var $inputs = $form.find("input, select, button, textarea, option");
 
    var serializedData = $form.serialize();
    $inputs.prop("disabled", true);
 
    request = $.ajax({
-       url: "inc/action_user_update.php",
+       url: "user/action_user_update.php",
        type: "POST",
        data: serializedData
    });

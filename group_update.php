@@ -4,7 +4,7 @@ include_once "inc/navbar.php";
     $data = $user->check_all_credentials('groups', 'group_id', $group_id);
     $upload = $user->upload('groups', 'groups_pic', 'group_id', $group_id);
 ?>
-<div class="container" style="margin-top:5rem;margin-bottom:5rem;">
+<div class="container">
     <div class="row">
         <div class="col-sm-12">
         <h1>Update group data:</h1>

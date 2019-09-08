@@ -1,5 +1,5 @@
 <?php session_start();
-include_once "class.user.php";
+include_once "../inc/class.user.php";
 
 $user_id = $_POST["user_id"];
 
@@ -9,8 +9,8 @@ $last_name = $user->protect_input($last_name, 'last_name');
 $username = $user->protect_input($username, 'username');
 $dob = $user->protect_input($dob, 'dob');
 $email = $user->protect_input($email, 'email');
-$user_role = $user->protect_input($user_role, 'user_role');
-$user_status = $user->protect_input($user_status, 'user_status');
+$user_role = $_POST['user_role'];
+$user_status = $_POST['user_status'];
 
 $data = array(
     'first_name'=>$first_name,

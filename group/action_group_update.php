@@ -1,5 +1,5 @@
 <?php session_start();
-include_once "class.user.php";
+include_once "../inc/class.user.php";
 
 $group_id = $_POST["group_id"];
 

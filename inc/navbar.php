@@ -43,11 +43,14 @@ unset($_SESSION['loggedin']);
             <li class="nav-item">
                 <a class="nav-link" href="logout.php?logout">Logout</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="myprofile.php">MyProfile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="create_group.php">MyGroups</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                MyStaff
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="myprofile.php">MyProfile</a>
+                    <a class="dropdown-item" href="create_group.php">MyGroups</a>
+                </div>
             </li>
         <?php } ?>
         <?php if (isset($_SESSION['admin'])){ ?>

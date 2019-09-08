@@ -2,7 +2,7 @@
 include_once "inc/navbar.php";
 $upload = $user->upload('users', 'image_path', 'user_id', $loggedin);
 ?>
-<div class="container" style="margin-top:5rem;margin-bottom:5rem;">
+<div class="container">
     <div class="row">
         <div class="col-sm-2">
 

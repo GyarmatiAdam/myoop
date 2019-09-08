@@ -31,12 +31,13 @@ body {
   }
   
 .table{
-    background-color: chocolate;
+    background-color: rgb(23, 204, 228);
 }
 .group_card{
     margin: 2%;
     width: 20rem;
 }
+.table:hover,
 .group_card:hover{
     transition: transform .5s;
     transform: scale(1.05); 

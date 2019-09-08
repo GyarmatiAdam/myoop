@@ -2,7 +2,7 @@
 include_once "inc/navbar.php";
 $data = $user->select_from('categories');
 ?>
-<div class="container" style="margin-top:5rem;">
+<div class="container">
     <div class="row">
         <div class="col-sm-12">
             <h2>Choose your category</h2>
