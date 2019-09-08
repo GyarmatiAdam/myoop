@@ -2,11 +2,14 @@
 include_once "inc/navbar.php";
 $cat_id = $_GET["cat_id"];
 $data = $user->check_all_credentials('groups', 'fk_cat_id', $cat_id);
+$category = $user->check_all_credentials('categories', 'cat_id', $cat_id);
 ?>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-        <h2>My groups:</h2>
+        <?php foreach($category as $cat_row){  ?>
+        <h2><?php echo $cat_row["cat_type"]; ?></h2>
+        <?php } ?>
         <?php if (isset($_SESSION['admin'])){ ?>
             <button class="btn btn-danger" type="button" name="delete_group" id="delete_group">Delete</button>
         <?php } ?>
