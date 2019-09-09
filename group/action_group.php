@@ -1,10 +1,5 @@
 <?php
 session_start();
-
-if(isset($_SESSION['user'])!="") {
-    header("Location: login.php");
-    exit;
-}
 include_once "../inc/class.user.php";
 $user = new User();
 

@@ -6,12 +6,20 @@ $cat_type = $user->protect_input($cat_type, 'cat_type');
 $categories_pic = $_FILES['file']['name'];
 
 if(isset($_POST['uploadBy'])){
-    $form_data = array(
-        'cat_type'=>$cat_type,
-        'categories_pic'=>$categories_pic
-    );
+    if(!$categories_pic){
+        $data = array(
+            'cat_type'=>$cat_type
+        );
 
-    $upload = $user->uploadBy('categories', $form_data);
+        $insert= $user->insert_into('categories',$data);
+    }else{
+        $form_data = array(
+            'cat_type'=>$cat_type,
+            'categories_pic'=>$categories_pic
+        );
+
+        $upload = $user->uploadBy('categories', $form_data);
+    }
 }
 
 ?>

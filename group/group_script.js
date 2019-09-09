@@ -21,7 +21,7 @@ $("#GroupForm").submit(function(event){
         data: serializedData
     });
  //success window// style and script ar included in navbar
-    request.done(function (response, textStatus, jqXHR){ 
+    request.done(function (response, textStatus, jqXHR){
          Swal.fire({
              position: 'center',
              type: 'success',
