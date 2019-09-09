@@ -8,7 +8,7 @@ $upload = $user->upload('users', 'image_path', 'user_id', $loggedin);
 
         </div>
         <div class="col-sm-8">
-        <h1>You can change your personal data here</h1>
+        <marquee><h1>You can change your personal data here</h1></marquee>
         <?php foreach($loggedin_data as $row){ ?>
             <div class="form" style="display: flex;">
                 <img class="img-fluid" style="max-width:40%; border-radius: 50%;" src="<?php if(!$row['image_path']){echo 'images/group.jpg';} else {echo 'images/'.$row['image_path'];}?>" />

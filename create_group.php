@@ -9,7 +9,7 @@ $category = $user->select_from('categories');
             <button class="btn btn-danger" type="button" name="delete_group" id="delete_group">Delete</button>
         </div>
         <div class="col-sm-10">
-        <h2>My groups:</h2>
+        <marquee><h1>My groups</h1></marquee>
             <div class="d-flex flex-wrap justify-content-center">
                 <?php foreach($data as $row){  ?> 
                     <div class="group_card card" style="width: 15rem;" id="<?php echo $row["group_id"]; ?>">

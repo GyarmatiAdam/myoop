@@ -5,7 +5,10 @@ $data = $user->select_from('categories');
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h2>Choose your category</h2>
+        <marquee><h1>Choose your category!!!</h1></marquee>
+        <?php if (isset($_SESSION['admin'])){ ?>
+        <button class="btn btn-danger" type="button" name="delete_category" id="delete_category">Delete</button>
+        <?php } ?>
             <div class="d-flex flex-wrap justify-content-center">
                 <?php foreach($data as $row){  ?> 
                     <div class="group_card card" id="<?php echo $row["cat_id"]; ?>">
