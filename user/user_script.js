@@ -16,7 +16,7 @@ $("#registerForm").submit(function(event){
    $inputs.prop("disabled", true);
 
    request = $.ajax({
-       url: "user/action_register.php",
+       url: "inc/action_register.php",
        type: "POST",
        data: serializedData
    });

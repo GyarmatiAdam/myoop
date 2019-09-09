@@ -152,5 +152,32 @@ class User {
         }//$_POST['upload'] close tag
     }
 
+////////////////////////image upload by insert//////////////////////////////////////////////////////
+    function uploadBy($table, $form_data){
+        global $connect;
+
+        if(isset($_POST['uploadBy'])){
+            
+            $target_dir = "../images/";
+            $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            $extensions_arr = array("jpg","jpeg","png","gif");
+            if( in_array($imageFileType,$extensions_arr) ){
+
+                $fields = array_keys($form_data);
+
+                $sql = "INSERT INTO ".$table."
+                (`".implode('`,`', $fields)."`)
+                VALUES('".implode("','", $form_data)."')";
+
+                mysqli_query($connect,$sql);
+            
+                move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$_FILES['file']['name']);
+            }
+        }//$_POST['upload'] close tag
+    }
+
+
 }//class User close tag
 ?>

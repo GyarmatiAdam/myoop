@@ -50,6 +50,9 @@ unset($_SESSION['loggedin']);
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="myprofile.php">MyProfile</a>
                     <a class="dropdown-item" href="create_group.php">MyGroups</a>
+                <?php if (isset($_SESSION['admin'])){ ?>
+                    <a class="dropdown-item" href="create_category.php">NewCategory</a>
+                <?php } ?>
                 </div>
             </li>
         <?php } ?>
