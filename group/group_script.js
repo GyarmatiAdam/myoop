@@ -188,5 +188,51 @@ $("#joinForm").submit(function(event){
  
  });
 
-
+  ////////////////////////////on leave the group///////////////////////////////////////////////////
+  $("#leaveGroup").submit(function(event){
+    event.preventDefault();
+ 
+    if (request) {
+        request.abort();
+    }
+ 
+    var $form = $(this);
+ 
+    var $inputs = $form.find("input");
+ 
+    var serializedData = $form.serialize();
+    $inputs.prop("disabled", true);
+ 
+    request = $.ajax({
+        url: "group/group_leave.php",
+        type: "POST",
+        data: serializedData
+    });
+ //success window// style and script ar included in navbar
+    request.done(function (response, textStatus, jqXHR){
+         Swal.fire({
+             position: 'center',
+             type: 'success',
+             title: 'You are successfully left this group!',
+             showConfirmButton: false,
+             timer: 1500
+         })
+     });
+ 
+    request.fail(function (jqXHR, textStatus, errorThrown){
+         Swal.fire({
+             type: 'error',
+             title: 'Oops...',
+             text: 'Something went wrong!',
+             showConfirmButton: false,
+             timer: 1500
+         })
+    });
+ 
+    request.always(function () {
+ 
+        $inputs.prop("disabled", false);
+    });
+ 
+ });
 // window.location.pathname='myoop/group/action_group.php'
