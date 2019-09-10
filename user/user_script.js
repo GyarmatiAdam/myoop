@@ -117,7 +117,7 @@ $("#update").submit(function(event){
             type: 'success',
             title: 'Data was successfully updated!',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1800
         })
     });
 
@@ -127,7 +127,7 @@ $("#update").submit(function(event){
             title: 'Oops...',
             text: 'Something went wrong!',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1800
         })
    });
 
@@ -135,5 +135,5 @@ $("#update").submit(function(event){
 
        $inputs.prop("disabled", false);
    });
-
+   setTimeout(location.reload.bind(location), 1800);
 });

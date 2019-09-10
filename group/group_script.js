@@ -27,7 +27,7 @@ $("#GroupForm").submit(function(event){
              type: 'success',
              title: 'You are successfully created!',
              showConfirmButton: false,
-             timer: 1500
+             timer: 1800
          })
      });
  
@@ -37,7 +37,7 @@ $("#GroupForm").submit(function(event){
              title: 'Oops...',
              text: 'Something went wrong!',
              showConfirmButton: false,
-             timer: 1500
+             timer: 1800
          })
     });
  //set the input fields empty
@@ -47,7 +47,7 @@ $("#GroupForm").submit(function(event){
  
         $inputs.prop("disabled", false);
     });
- 
+    setTimeout(location.reload.bind(location), 1800);
  });
  
  ////////////////////////////////////////////on update///////////////////////////////////////////
@@ -77,7 +77,7 @@ $("#group_update").submit(function(event){
              type: 'success',
              title: 'Data was successfully updated!',
              showConfirmButton: false,
-             timer: 1500
+             timer: 1800
          })
      });
  
@@ -87,7 +87,7 @@ $("#group_update").submit(function(event){
              title: 'Oops...',
              text: 'Something went wrong!',
              showConfirmButton: false,
-             timer: 1500
+             timer: 1800
          })
     });
  
@@ -95,7 +95,7 @@ $("#group_update").submit(function(event){
  
         $inputs.prop("disabled", false);
     });
- 
+    setTimeout(location.reload.bind(location), 1800);
  });
  
  ////////////////////////////on delete///////////////////////////////////////////////////
@@ -143,7 +143,7 @@ var request;
 
 $("#joinForm").submit(function(event){
     event.preventDefault();
- 
+    
     if (request) {
         request.abort();
     }
@@ -160,6 +160,7 @@ $("#joinForm").submit(function(event){
         type: "POST",
         data: serializedData
     });
+    
  //success window// style and script ar included in navbar
     request.done(function (response, textStatus, jqXHR){
          Swal.fire({
@@ -177,15 +178,15 @@ $("#joinForm").submit(function(event){
              title: 'Oops...',
              text: 'Something went wrong!',
              showConfirmButton: false,
-             timer: 1500
+             timer: 1800
          })
     });
- 
+    
     request.always(function () {
  
         $inputs.prop("disabled", false);
     });
- 
+    setTimeout(location.reload.bind(location), 1800);
  });
 
   ////////////////////////////on leave the group///////////////////////////////////////////////////
@@ -215,7 +216,7 @@ $("#joinForm").submit(function(event){
              type: 'success',
              title: 'You are successfully left this group!',
              showConfirmButton: false,
-             timer: 1500
+             timer: 1800
          })
      });
  
@@ -228,11 +229,12 @@ $("#joinForm").submit(function(event){
              timer: 1500
          })
     });
- 
+    
     request.always(function () {
  
         $inputs.prop("disabled", false);
     });
- 
+    setTimeout(location.reload.bind(location), 1800);
  });
+
 // window.location.pathname='myoop/group/action_group.php'

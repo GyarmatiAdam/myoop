@@ -72,6 +72,12 @@ unset($_SESSION['loggedin']);
                 </a>
             </li>
             </ul>
+        <?php }else{ ?>
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="login.php">You have to login to make actions!</a>
+            </li>
+            </ul>
         <?php } ?>
             <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
