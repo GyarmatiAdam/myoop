@@ -31,9 +31,11 @@ include_once "inc/navbar.php";
                     <button type="submit" class="btn-block btn btn-danger">I want to Leave this group</button>
                 </form>
             <?php } ?>
-            <div class="form btn-group text-justify" role="group">
-                <img class="img-fluid" style="max-width:30%;" src="<?php if(!$group_row['groups_pic']){echo 'images/group.jpg';} else {echo 'images/'.$group_row['groups_pic'];}?>" />
-                <h6 style="margin:3%;"><?php echo $group_row['group_desc']; ?></h6>
+            <div class="form text-center">
+                <p><img class="img-fluid rounded" src="<?php if(!$group_row['groups_pic']){echo 'images/group.jpg';} else {echo 'images/'.$group_row['groups_pic'];}?>" /></p>
+            </div>
+            <div class="form">
+                <h6 class="text-justify"><?php echo $group_row['group_desc']; ?></h6>
             </div>
         <?php }?>
         <?php if($loggedin_id == $fk_user_id){ ?>
