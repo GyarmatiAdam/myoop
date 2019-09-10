@@ -25,7 +25,7 @@ $("#GroupForm").submit(function(event){
          Swal.fire({
              position: 'center',
              type: 'success',
-             title: 'You are successfully registered!',
+             title: 'You are successfully created!',
              showConfirmButton: false,
              timer: 1500
          })
@@ -137,5 +137,56 @@ $(document).ready(function(){
         }
     });
 });
+
+///////////////////////////////////////////on group join////////////////////////////////
+var request;
+
+$("#joinForm").submit(function(event){
+    event.preventDefault();
+ 
+    if (request) {
+        request.abort();
+    }
+ 
+    var $form = $(this);
+ 
+    var $inputs = $form.find("input, button");
+ 
+    var serializedData = $form.serialize();
+    $inputs.prop("disabled", true);
+ 
+    request = $.ajax({
+        url: "group/action_join.php",
+        type: "POST",
+        data: serializedData
+    });
+ //success window// style and script ar included in navbar
+    request.done(function (response, textStatus, jqXHR){
+         Swal.fire({
+             position: 'center',
+             type: 'success',
+             title: 'You are successfully Joined!',
+             showConfirmButton: false,
+             timer: 1500
+         })
+     });
+ 
+    request.fail(function (jqXHR, textStatus, errorThrown){
+         Swal.fire({
+             type: 'error',
+             title: 'Oops...',
+             text: 'Something went wrong!',
+             showConfirmButton: false,
+             timer: 1500
+         })
+    });
+ 
+    request.always(function () {
+ 
+        $inputs.prop("disabled", false);
+    });
+ 
+ });
+
 
 // window.location.pathname='myoop/group/action_group.php'

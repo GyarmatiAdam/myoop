@@ -1,24 +1,45 @@
 <?php 
 include_once "inc/navbar.php";
     $group_id = $_GET["group_id"];
+    $loggedin_id= $loggedin_row['user_id'];
     $group = $user->check_all_credentials('groups', 'group_id', $group_id);
     $member = $user->check_all_credentials('grusers', 'fk_group_id', $group_id);
+        foreach($member as $member_row){
+            $fk_user_id = $member_row['fk_user_id']; 
+        }
+
+    $user_verify = $user->check_all_credentials('users', 'user_id', $fk_user_id);
+        foreach($user_verify as $user_row){
+            $username = $user_row['username'];
+        }
 ?>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
         <?php foreach($group as $group_row){ ?>
             <marquee><h1>We are <?php echo $group_row['group_name']; ?></h1></marquee>
+            <?php if($loggedin_id !== $fk_user_id){ ?>
+                <form method="POST" id="joinForm">
+                    <input type="hidden"  name="fk_group_id" value="<?php echo $group_id ?>">
+                    <input type="hidden"  name="fk_user_id" value="<?php echo $loggedin_id ?>">
+                    <button type="submit" class="btn-block btn btn-primary">I want to JOIN this group</button>
+                </form>
+            <?php }?>
             <div class="form">
                 <img class="img-fluid" style="max-width:30%;" src="<?php if(!$group_row['groups_pic']){echo 'images/group.jpg';} else {echo 'images/'.$group_row['groups_pic'];}?>" />
                 <h3 style="float:right;"><?php echo $group_row['group_desc']; ?></h3>
             </div>
         <?php }?>
-        <?php foreach($member as $member_row){ ?>
+        <?php if($loggedin_id == $fk_user_id){ ?>
             <div class="form">
-                <p>(<?php echo $member_row['gruser_role']; ?>)</p>
+                <button class="btn-block btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseMember">Members</button>
+                <div class="collapse" id="collapseMember">
+                    <div class="card card-body">
+                        <p><?php echo $username; ?></p>
+                    </div>
+                </div>
             </div>
-        <?php }?>
+        <?php } ?>
         </div>
     </div>
 </div>
