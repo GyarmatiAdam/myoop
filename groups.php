@@ -19,9 +19,10 @@ $category = $user->check_all_credentials('categories', 'cat_id', $cat_id);
                     <img class="card-img-top" src="<?php if(!$row['groups_pic']){echo 'images/group.jpg';} else {echo 'images/'.$row['groups_pic'];}?>" />
                         <div class="card-body">
                             <h5 class="text-center card-title"><?php echo $row['group_name'];?></h5>
+                            <?php echo "<a href='group_joined.php?group_id=" .$row['group_id']."'><button name='joinGroup' class='btn-block btn btn-primary' type='button'>Join Group</button></a>"; ?>
                             <?php if (isset($_SESSION['admin'])){ ?>
-                            <small>Choose to delete: </small><input type="checkbox" name="group_id" value="<?php echo $row["group_id"]; ?>">
-                            <?php echo "<a href='group_update.php?group_id=" .$row['group_id']."'><button class='btn-block btn btn-warning' type='button'>Edit Group</button></a>"; ?>
+                                <?php echo "<a href='group_update.php?group_id=" .$row['group_id']."'><button class='btn-block btn btn-warning' type='button'>Edit Group</button></a>"; ?>
+                                <small>Choose to delete: </small><input type="checkbox" name="group_id" value="<?php echo $row["group_id"]; ?>">
                             <?php } ?>
                         </div>
                     </div>

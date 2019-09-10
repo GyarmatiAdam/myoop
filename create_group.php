@@ -50,6 +50,8 @@ $category = $user->select_from('categories');
                 <div class="form-group">
                     <textarea rows="3" type="text" class="form-control" name="vacancy_desc" placeholder="Invitation" required></textarea>
                 </div>
+                <input type="hidden" class="form-control" name="fk_user_id" value="<?php echo $loggedin_row ['user_id'];  ?>">
+                
                 <button type="submit" class="btn btn-primary">Create Group</button>
             </form>
             

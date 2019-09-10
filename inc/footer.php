@@ -1,7 +1,5 @@
-    <div class="card text-center fixed-bottom">
-        <div class="card-body" id="footer">
-            <h5 class="card-title"><small>This site proudly made by</small> Adam Gyarmati</h5>
-        </div>
+    <div class="footer fixed-bottom">
+        <h5 class="text-center"><small>This site proudly made by</small> Adam Gyarmati</h5>
     </div>
     <script type="text/javascript" src="category/category_script.js"></script>
     <script type="text/javascript" src="user/user_script.js"></script>
